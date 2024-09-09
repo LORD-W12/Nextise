@@ -2,6 +2,8 @@
 
 Thank you for participating in our full-stack coding test. This challenge involves building a tool for managing seminars, allowing users to sign in, create a course, assign a trainer, and send notifications to trainers upon assignment.
 
+The challenge involves working on a project similar to our "Seminar Management" example, which is provided to give you a starting point.
+
 The focus of this test is on implementing the core **functionalities**, not UI design. You should be able to complete the task within **1 hour**.
 
 ## Grading Criteria
@@ -16,7 +18,13 @@ Your submission will be evaluated on:
 
 ## Prerequisites/Environment Setup
 
-**Technologies required**:
+Refer to the `seminar-management` project for:
+
+- Basic page structure and component examples.
+- Initial styling using Tailwind CSS.
+- Sample data models for courses and trainers.
+
+  **Technologies required**:
 
 - **Next.js** (LTS): You can choose between the App Router or Pages structure.
 - **Node.js**: LTS/Gallium (^16.19.0)
@@ -96,6 +104,21 @@ Your submission will be evaluated on:
      - Ensure that the system prevents assigning a trainer who already has a course scheduled on the same day.
 
 ### Docker Setup
+
+### Install Dependencies
+
+Clone the repository and navigate to the project directory:
+
+```bash
+git clone <repository-url>
+cd kodschul-management-hub
+```
+
+Install the project dependencies using Yarn:
+
+```bash
+yarn install
+```
 
 The project must be containerized using **Docker Compose**, including:
 
