@@ -77,6 +77,24 @@ Your submission will be evaluated on:
 - **Assign Trainer**: Functionality to assign a trainer to a course.
 - **Email Notification**: Once a trainer is assigned, send an email to the trainer with all course details using **Node.js SMTP mailer** (Mailhog for local testing).
 
+### Algorithmic Challenge:
+
+**Combined Problem:**
+
+1. **Course Scheduling Conflict Detection**:
+
+   - Implement a function that checks if two courses are scheduled at the same time and location. If there's a conflict, return a warning message.
+
+2. **Optimal Trainer Matching**:
+
+   - Before assigning a trainer to a course, the system should suggest the best-matching trainer based on their availability and subject expertise.
+   - If a selected trainer is already scheduled for another course on the same day, the system should reject the assignment to avoid conflicts.
+
+   - **Requirements**:
+     - Write a function to detect scheduling conflicts when a new course is created.
+     - Write a function to suggest the most qualified trainer for a course considering both availability and subject expertise.
+     - Ensure that the system prevents assigning a trainer who already has a course scheduled on the same day.
+
 ### Docker Setup
 
 The project must be containerized using **Docker Compose**, including:
