@@ -1,32 +1,74 @@
-## Implementation:
+## Architecture & Design Decisions
 
-**Q) What libraries did you add to the frontend? What are they used for?**  
-(Explain any additional libraries or tools you included and their purpose.)
+**Q) Describe your overall architecture and design decisions. Why did you choose this structure?**  
+(Explain your folder structure, separation of concerns, design patterns used, and architectural choices.)
 
-**Q) What libraries did you add to the backend? What are they used for?**  
-(Explain any additional libraries or tools for backend functionality and what they are for.)
+**Q) What libraries and frameworks did you choose and why?**  
+(Explain your technology choices for both frontend and backend, including state management, validation, database ORM/ODM, etc.)
 
-**Q) How does the application handle the assignment of trainers and the email notification feature?**  
-(Describe the implementation of the email functionality and how Mailhog was used for testing.)
+**Q) How did you structure your database schema? What relationships and indexes did you create?**  
+(Describe your database design, including any performance optimizations.)
+
+---
+
+## Implementation Details
+
+**Q) Explain your conflict detection algorithm. How does it work and what edge cases did you consider?**  
+(Describe the logic, time complexity, and how you handle various conflict scenarios.)
+
+**Q) Explain your AI-powered trainer matching implementation. How did you integrate with the external AI API?**  
+(Describe your AI service choice, prompt engineering approach, how you structure context for the AI, parse responses, handle API errors and rate limits, and what fallback mechanisms you implemented.)
+
+**Q) How does the application handle trainer assignment and email notifications?**  
+(Describe the flow, error handling, transaction management, and how Mailhog was used for testing.)
+
+**Q) What security measures did you implement?**  
+(Explain input validation, sanitization, SQL injection prevention, XSS protection, authentication security, etc.)
+
+**Q) How did you handle error cases and edge scenarios?**  
+(Describe your error handling strategy, user feedback, logging, and graceful degradation.)
+
+---
+
+## Technical Questions
 
 **Q) What command do you use to start the application locally?**  
 `(Provide the command, e.g., docker-compose up, npm start)`
 
+**Q) How would you scale this application to handle 10,000+ courses?**  
+(Describe performance optimizations, caching strategies, database optimizations, etc.)
+
+**Q) How would you handle concurrent trainer assignments to the same course?**  
+(Explain your approach to race conditions, database transactions, locking mechanisms, etc.)
+
+**Q) What testing strategy would you implement for this application?**  
+(Describe unit tests, integration tests, E2E tests, and what you would test.)
+
 ---
 
-## General:
+## Reflection
 
 **Q) If you had more time, what improvements or new features would you add?**  
-(Discuss any potential enhancements, such as improved UI, new functionalities, etc.)
+(Discuss potential enhancements, optimizations, or features that would make this production-ready.)
 
 **Q) Which parts of the project are you most proud of? Why?**  
-(Highlight the parts of the code that you think are most well-written or efficient.)
+(Highlight the parts of the code that demonstrate your best work, problem-solving skills, or technical expertise.)
 
 **Q) Which parts did you spend the most time on? What did you find most challenging?**  
-(Describe any difficulties or complexities you encountered during development.)
+(Describe the most complex problems you solved, trade-offs you made, and what you learned.)
 
-**Q) How did you find the test overall? Did you encounter any issues or difficulties completing it?**  
-(Provide feedback on the test’s difficulty and any areas that could be clarified or improved.)
+**Q) What trade-offs did you make during development?**  
+(Explain any shortcuts, simplifications, or decisions you made due to time constraints, and how you would improve them.)
 
-**Q) Do you have any suggestions on how we can improve the test?**  
-(We welcome suggestions to improve the interview process or the structure of the test.)
+**Q) How did you approach the AI API integration? What AI service did you choose and why?**  
+(Describe your AI service selection, prompt design process, how you structured the context and prompts, response parsing strategy, error handling approach, cost considerations, and any alternatives you considered.)
+
+---
+
+## Feedback
+
+**Q) How did you find the assessment overall? Did you encounter any issues or difficulties?**  
+(Provide honest feedback on the assessment's difficulty, clarity, and any areas that could be improved.)
+
+**Q) Do you have any suggestions on how we can improve the assessment?**  
+(We welcome suggestions to improve the interview process, assessment structure, or requirements clarity.)

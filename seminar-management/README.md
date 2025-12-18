@@ -1,40 +1,132 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Seminar Management System - Starter Project
+
+This is the starter project for the Nextise Full-Stack Senior Developer Assessment. It provides a basic Next.js setup with some initial UI components to get you started.
+
+## Project Structure
+
+```
+seminar-management/
+├── components/          # React components
+├── pages/              # Next.js pages and API routes
+├── styles/             # Global styles
+├── lib/                # Utilities and shared code (you'll create this)
+└── public/             # Static assets
+```
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js (LTS version 18.x or 20.x)
+- Docker and Docker Compose
+- Yarn or npm
+
+### Installation
 
 ```bash
-npm run dev
+# Install dependencies
+yarn install
 # or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Development
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```bash
+# Run development server
+yarn dev
+# or
+npm run dev
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### Building for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```bash
+yarn build
+yarn start
+```
 
-## Learn More
+## Current State
 
-To learn more about Next.js, take a look at the following resources:
+This starter includes:
+- Basic Next.js setup with TypeScript
+- Tailwind CSS for styling
+- Sample pages: Login, Dashboard, Courses, Trainers
+- Basic Header component
+- Modern UI design (enhanced for assessment)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## What You Need to Build
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+**Everything else.** This is intentionally minimal. You need to:
 
-## Deploy on Vercel
+1. **Design the architecture** - Create the folder structure that makes sense
+2. **Implement the database layer** - Choose MongoDB or MySQL/PostgreSQL
+3. **Build the API routes** - All backend logic
+4. **Implement authentication** - Login, session management, protected routes
+5. **Create forms and functionality** - Course creation, trainer management, assignment
+6. **Build the conflict detection system** - Sophisticated algorithm
+7. **Implement AI matching with external API** - Integrate with AI service (OpenAI, Anthropic, etc.) for intelligent trainer suggestions
+8. **Set up email notifications** - Using Mailhog for testing
+9. **Configure Docker Compose** - All services containerized
+10. **Add error handling, validation, security** - Production-ready code
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Key Files to Review
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- `pages/index.tsx` - Dashboard (needs real data)
+- `pages/login.tsx` - Login page (needs authentication)
+- `pages/courses.tsx` - Courses list (needs CRUD operations)
+- `pages/trainers.tsx` - Trainers list (needs CRUD operations)
+- `components/Header.tsx` - Header component (enhanced UI)
+
+## Design Decisions
+
+You'll need to make architectural decisions about:
+- State management approach
+- API structure and routing
+- Database schema design
+- Error handling strategy
+- Validation approach
+- Component organization
+- Hook patterns
+- Service layer structure
+
+## Notes
+
+- The UI has been enhanced with modern design patterns, but functionality is not implemented
+- Sample data is hardcoded - replace with real database queries
+- Forms are not functional - you need to implement all form handling
+- No validation exists - you need to add comprehensive validation
+- No error handling - implement proper error boundaries and handling
+- Authentication is not implemented - build the full auth system
+
+## Environment Variables
+
+You'll need to create a `.env.local` file with:
+- Database connection strings
+- SMTP/Mailhog configuration
+- **AI API configuration** (API key, endpoint, model - e.g., OpenAI, Anthropic)
+- Any other configuration your system needs
+
+**Note:** You'll need to sign up for an AI API service (many offer free tiers for testing). Document which service you chose and why in your implementation.
+
+## Docker Setup
+
+You need to create:
+- `Dockerfile` for the Next.js app
+- `docker-compose.yml` with all services
+- Proper networking and volume configuration
+
+## Assessment Focus
+
+Remember, this assessment evaluates:
+- **Architecture & Design** - How you structure the application
+- **Problem Solving** - Your approach to complex features (conflict detection, AI matching)
+- **Code Quality** - Clean, maintainable, production-ready code
+- **Security** - Proper validation, sanitization, protection
+- **Best Practices** - Following industry standards
+
+Don't just make it work - make it work well, securely, and scalably.
+
+Good luck!
