@@ -60,8 +60,39 @@
 **Q) What trade-offs did you make during development?**  
 (Explain any shortcuts, simplifications, or decisions you made due to time constraints, and how you would improve them.)
 
+**Q) Did you use AI coding tools (Claude Code, Copilot, Cursor, ChatGPT, etc.) during this assessment? If so, describe exactly how.**  
+(Be honest — we expect experienced engineers to use AI tools. What matters is *how* you used them. Did you prompt-and-accept, or did you direct, review, and correct? What decisions did you make that the AI could not have made for you?)
+
+**Q) What part of this assessment could NOT be completed by an AI tool acting alone, and why?**  
+(This is the most important reflection question. Identify the decision, design choice, or judgment call in your submission that required genuine engineering expertise — not just generation.)
+
 **Q) How did you approach the AI API integration? What AI service did you choose and why?**  
 (Describe your AI service selection, prompt design process, how you structured the context and prompts, response parsing strategy, error handling approach, cost considerations, and any alternatives you considered.)
+
+---
+
+## Agentic Engineering
+
+**Q) Walk us through the agent pipeline you designed in your skill file. What are the agents, what does each one receive as input, and what does it produce as output?**  
+(Be specific — list each agent by name and describe its exact input/output contract. Vague answers like "it passes context to the next agent" will score poorly.)
+
+**Q) How did you decide where to draw the boundary between agents? Why didn't you use fewer agents (e.g., one mega-agent) or more agents?**  
+(Explain your reasoning about agent granularity. What would break if you merged two agents? What would be wasteful if you split one further?)
+
+**Q) What context does each agent receive, and what did you deliberately exclude? Why?**  
+(Good agentic design means agents get exactly what they need — no more, no less. Explain the tradeoffs you made in context scoping.)
+
+**Q) How does your pipeline handle a rejection from the Reviewer Agent? Walk through the exact flow step by step.**  
+(Describe how the critique is passed back, which agent handles it, and how you prevent infinite loops.)
+
+**Q) What is the termination condition for your pipeline? Under what circumstances does it stop, and how do you know it completed successfully vs. failed silently?**  
+(Explain both the success path and the failure path.)
+
+**Q) What would break first if you ran this skill against a significantly larger codebase (e.g., 50 files, 10,000 lines)? How would you fix it?**  
+(This tests whether you understand the context window and cost constraints of agentic systems at scale.)
+
+**Q) If the Reviewer Agent consistently rejects valid output due to a poorly written review prompt, how would you debug and fix it without changing the other agents?**  
+(This tests your ability to isolate failures in a multi-agent system.)
 
 ---
 

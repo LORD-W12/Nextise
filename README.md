@@ -21,6 +21,7 @@ Your submission will be evaluated on:
 - **Git Practices**: Clean commit history with meaningful messages
 - **Documentation**: Code comments, API documentation, setup instructions
 - **Performance**: Efficient algorithms, database queries, and state management
+- **Agentic Engineering**: Quality of your agent pipeline design — role clarity, context efficiency, failure handling, and termination logic (see Section 5)
 
 ## Prerequisites
 
@@ -206,7 +207,59 @@ You must integrate with an external AI API service (OpenAI, Anthropic Claude, Go
 - Network error handling
 - Database error handling
 
-### 5. Docker Setup
+### 5. Agentic AI Engineering Challenge (Required)
+
+This section tests your ability to **design and orchestrate AI agents** — not just use an AI API. Anyone can call `openai.chat.completions.create`. What we're evaluating here is whether you can think in systems: defining agent roles, designing context handoffs, and building a self-executing pipeline that doesn't require a human in the loop.
+
+#### What You Must Build
+
+Create a Claude Code skill file at `.claude/skills/build-trainer-matching.md`.
+
+When a developer invokes `/build-trainer-matching` from the project root, this skill must autonomously orchestrate a sequence of AI agents that collectively implement the full trainer matching module — from database query to UI rendering — without further human input.
+
+#### Skill File Requirements
+
+Your skill file must define a pipeline of **at least 4 distinct agents**, each with a clearly scoped role. The following agents are required (you may add more):
+
+| Agent | Responsibility |
+|---|---|
+| **Planner Agent** | Reads the current codebase structure and outputs a step-by-step implementation plan for the trainer matching feature |
+| **API Agent** | Implements the backend `/api/trainers/suggest` endpoint based on the plan |
+| **UI Agent** | Implements the frontend component that calls the API and displays ranked suggestions |
+| **Reviewer Agent** | Reviews the output of both the API and UI agents, identifies issues, and outputs a structured critique |
+| **Reconciler Agent** (if Reviewer flags issues) | Receives the critique and revises the flagged agent's output until the Reviewer approves or a max iteration count is reached |
+
+#### Skill File Design Rules
+
+Your `.claude/skills/build-trainer-matching.md` must:
+
+1. **Define agent roles explicitly** — each agent must have a named role, a specific input it receives, and a specific output it produces
+2. **Specify context passing** — document exactly what information each agent hands to the next (what is included, what is excluded, and why)
+3. **Handle rejection loops** — if the Reviewer Agent rejects the output, the skill must route back to the responsible agent with the critique as input, not restart from scratch
+4. **Set termination conditions** — the pipeline must define when it is "done" (Reviewer approves, or max N revision cycles reached) so it does not loop infinitely
+5. **Be self-contained** — invoking `/build-trainer-matching` should require zero additional human prompts to complete
+
+#### Evaluation Criteria for the Skill File
+
+You will be evaluated on:
+
+- **Role clarity**: Are agent boundaries clean? Does each agent do exactly one thing?
+- **Context efficiency**: Are you passing only what each agent needs, or dumping everything into every prompt?
+- **Failure design**: What happens when an agent produces bad output? Is it handled, or does the pipeline silently fail?
+- **Termination logic**: Can the pipeline get stuck in an infinite loop? How did you prevent it?
+- **Prompt precision**: Are the instructions inside each agent definition unambiguous? Could a different model follow them correctly?
+- **Does it actually work**: Invoke the skill and include the terminal output log in your submission
+
+#### Submission Requirement
+
+Include in your repository:
+- `.claude/skills/build-trainer-matching.md` — the skill file
+- `agent-run.log` or a screenshot — proof that the skill was invoked and completed
+- Your answers to the Agentic Engineering section in `FOLLOW-UP.md`
+
+> **Note:** We are not looking for perfect generated code from the agents. We are looking for a well-architected pipeline. A skill file that orchestrates agents thoughtfully and handles failure gracefully scores higher than one that produces clean code but has no error handling and loops forever on bad output.
+
+### 6. Docker Setup
 
 Create a comprehensive `docker-compose.yml` that includes:
 - Next.js application container
@@ -217,7 +270,7 @@ Create a comprehensive `docker-compose.yml` that includes:
 - Volume mounts for development
 - Health checks (optional but recommended)
 
-### 6. Database Design
+### 7. Database Design
 
 - Proper schema design with relationships
 - Indexes for performance (on frequently queried fields)
@@ -303,6 +356,8 @@ These are not required but will impress us:
 - Pagination for large datasets
 - Dark mode
 - Accessibility features (ARIA labels, keyboard navigation)
+- **Extend your skill file** to also build the conflict detection module, with a separate agent pipeline that reuses the Reviewer/Reconciler pattern
+- **Add a Breakdown Agent** as the first step in your pipeline: given only the README requirements, it produces the implementation plan autonomously with no hardcoded assumptions
 
 ## Questions to Consider
 
