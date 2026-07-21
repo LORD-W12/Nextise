@@ -342,7 +342,8 @@ Your project should include clear instructions for:
    - API documentation
    - Known limitations or assumptions
 4. **FOLLOW-UP.md**: Answer the questions in the provided template
-5. **Exclusions**: Don't include `node_modules`, `.next`, or database files
+5. **AI Session Transcript (required)**: Include your Claude Code (or equivalent) session transcript / prompt history as `ai-session.md` (or export). We want to see *how* you drove the tool — where you scoped prompts, overrode the model, and stopped to make a judgment call — not just the final output.
+6. **Exclusions**: Don't include `node_modules`, `.next`, or database files
 
 ## Bonus Points (Optional)
 
