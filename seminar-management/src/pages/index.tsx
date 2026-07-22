@@ -1,25 +1,23 @@
 import React from 'react';
 import Header from '@/components/layouts/Header';
 import Link from 'next/link';
-import { useState } from 'react';
+import useSWR from 'swr';
+import apiClient from '@/services/apiClient';
 import { useAuth } from '@/hooks/useAuth';
 import { Loader } from '@/components/ui/Loader';
 
 export default function Home() {
-  const [stats] = useState({
-    totalCourses: 5,
-    totalTrainers: 12,
-    upcomingCourses: 3,
-    completedCourses: 2,
-  });
+  const { user, isLoading: authLoading, logout } = useAuth(true);
+  const { data: stats, isLoading: statsLoading } = useSWR('/api/dashboard',
+    (url: string) => apiClient.get(url).then(res => res.data)
+  );
 
-  const { user, isLoading, logout } = useAuth(true);
 
   const handleSignOut = () => {
     logout();
   };
 
-  if (isLoading || !user) return <Loader fullScreen />;
+  if (authLoading || !user || statsLoading || !stats) return <Loader fullScreen />;
 
   const statCards = [
     { label: 'Total Courses', value: stats.totalCourses, color: 'from-blue-500 to-blue-600', icon: '📚' },
