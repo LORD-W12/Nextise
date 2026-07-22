@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: seminar-management-app
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=${DATABASE_URL:-file:/data/seminar.db}
+      - NEXTAUTH_SECRET=${NEXTAUTH_SECRET:-supersecret_change_me_in_production}
+      - NEXTAUTH_URL=${NEXTAUTH_URL:-http://localhost:3000}
+      - JWT_SECRET=${JWT_SECRET:-jwt_supersecret_change_in_production}
+      - SMTP_HOST=mailhog
+      - SMTP_PORT=1025
+      - SMTP_FROM=${SMTP_FROM:-noreply@seminar-hub.local}
+      - GEMINI_API_KEY=${GEMINI_API_KEY:-}
+      - NEXT_PUBLIC_API_URL=http://localhost:3000/api
+    volumes:
+      - sqlite_data:/data
+    depends_on:
+      - mailhog
+    networks:
+      - seminar-network
+
+  mailhog:
+    image: mailhog/mailhog:latest
+    container_name: seminar-mailhog
+    restart: unless-stopped
+    ports:
+      - '1025:1025'  # SMTP
+      - '8025:8025'  # Web UI
+    networks:
+      - seminar-network
+
+volumes:
+  sqlite_data:
+
+networks:
+  seminar-network:
+    driver: bridge

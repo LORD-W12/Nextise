@@ -1,0 +1,83 @@
+
+E:\project\fing job tes\fullstack-dev-assessment\seminar-management\src\components\layouts\Header.tsx
+  1:1  error  Do not use a triple slash reference for react, use `import` style instead  @typescript-eslint/triple-slash-reference
+
+E:\project\fing job tes\fullstack-dev-assessment\seminar-management\src\components\ui\AssignTrainerModal.tsx
+   7:18  error  'Trainer' is defined but never used       @typescript-eslint/no-unused-vars
+  43:25  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+E:\project\fing job tes\fullstack-dev-assessment\seminar-management\src\components\ui\CourseModal.tsx
+   2:19  error  'Controller' is defined but never used        @typescript-eslint/no-unused-vars
+   8:18  error  'CourseStatus' is defined but never used      @typescript-eslint/no-unused-vars
+  36:9   error  'control' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+E:\project\fing job tes\fullstack-dev-assessment\seminar-management\src\components\ui\Modal.tsx
+  2:10  error  'Button' is defined but never used  @typescript-eslint/no-unused-vars
+
+E:\project\fing job tes\fullstack-dev-assessment\seminar-management\src\components\ui\Table.tsx
+  60:79  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+E:\project\fing job tes\fullstack-dev-assessment\seminar-management\src\pages\api\courses\[id].ts
+  9:67  error  '_user' is defined but never used  @typescript-eslint/no-unused-vars
+
+E:\project\fing job tes\fullstack-dev-assessment\seminar-management\src\pages\api\courses\[id]\assign.ts
+  15:67  error  '_user' is defined but never used  @typescript-eslint/no-unused-vars
+
+E:\project\fing job tes\fullstack-dev-assessment\seminar-management\src\pages\api\courses\[id]\suggest-trainers.ts
+  13:67  error  '_user' is defined but never used  @typescript-eslint/no-unused-vars
+
+E:\project\fing job tes\fullstack-dev-assessment\seminar-management\src\pages\api\courses\index.ts
+  8:67  error  '_user' is defined but never used  @typescript-eslint/no-unused-vars
+
+E:\project\fing job tes\fullstack-dev-assessment\seminar-management\src\pages\api\trainers\[id].ts
+  9:67  error  '_user' is defined but never used  @typescript-eslint/no-unused-vars
+
+E:\project\fing job tes\fullstack-dev-assessment\seminar-management\src\pages\api\trainers\index.ts
+  8:67  error  '_user' is defined but never used  @typescript-eslint/no-unused-vars
+
+E:\project\fing job tes\fullstack-dev-assessment\seminar-management\src\pages\courses.tsx
+  23:10  error  'courseToDelete' is assigned a value but never used     @typescript-eslint/no-unused-vars
+  23:26  error  'setCourseToDelete' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  51:36  error  Unexpected any. Specify a different type                @typescript-eslint/no-explicit-any
+
+E:\project\fing job tes\fullstack-dev-assessment\seminar-management\src\pages\login.tsx
+  36:19  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+E:\project\fing job tes\fullstack-dev-assessment\seminar-management\src\pages\trainers.tsx
+  42:37  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+E:\project\fing job tes\fullstack-dev-assessment\seminar-management\src\prisma-mock.d.ts
+  3:17  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  4:18  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  5:28  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  5:42  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+E:\project\fing job tes\fullstack-dev-assessment\seminar-management\src\server\infrastructure\database\repositories\PrismaCourseRepository.ts
+   75:29  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   75:59  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   83:46  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   91:29  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   91:59  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  111:44  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  132:44  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+E:\project\fing job tes\fullstack-dev-assessment\seminar-management\src\server\infrastructure\database\repositories\PrismaTrainerRepository.ts
+  36:29  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  36:59  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+E:\project\fing job tes\fullstack-dev-assessment\seminar-management\src\server\use-cases\courses\AssignTrainerUseCase.test.ts
+  10:9    error  'mockTrainerRepo' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  12:9    error  'mockDetectConflict' is defined but never used        @typescript-eslint/no-unused-vars
+  20:14   error  Unexpected any. Specify a different type              @typescript-eslint/no-explicit-any
+  24:14   error  Unexpected any. Specify a different type              @typescript-eslint/no-explicit-any
+  28:14   error  Unexpected any. Specify a different type              @typescript-eslint/no-explicit-any
+  32:14   error  Unexpected any. Specify a different type              @typescript-eslint/no-explicit-any
+  48:102  error  Unexpected any. Specify a different type              @typescript-eslint/no-explicit-any
+  52:101  error  Unexpected any. Specify a different type              @typescript-eslint/no-explicit-any
+  59:102  error  Unexpected any. Specify a different type              @typescript-eslint/no-explicit-any
+
+E:\project\fing job tes\fullstack-dev-assessment\seminar-management\src\server\use-cases\courses\DetectConflictUseCase.test.ts
+  18:14  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+✖ 42 problems (42 errors, 0 warnings)
+
