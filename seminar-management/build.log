@@ -1,0 +1,161 @@
+time="2026-07-23T01:13:52+01:00" level=warning msg="E:\\project\\fing job tes\\fullstack-dev-assessment\\seminar-management\\docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+ Image seminar-management-app Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 605B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 1.30kB 0.1s done
+#2 DONE 0.1s
+
+#3 [internal] load metadata for docker.io/library/node:22-alpine
+#3 DONE 2.5s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 141B 0.0s done
+#4 DONE 0.1s
+
+#5 [internal] load build context
+#5 DONE 0.0s
+
+#6 [deps 1/5] FROM docker.io/library/node:22-alpine@sha256:16e22a550f3863206a3f701448c45f7912c6896a62de43add43bb9c86130c3e2
+#6 resolve docker.io/library/node:22-alpine@sha256:16e22a550f3863206a3f701448c45f7912c6896a62de43add43bb9c86130c3e2 0.1s done
+#6 DONE 0.2s
+
+#5 [internal] load build context
+#5 transferring context: 7.26kB 0.1s done
+#5 DONE 0.1s
+
+#7 [deps 4/5] COPY package.json package-lock.json* yarn.lock* ./
+#7 CACHED
+
+#8 [deps 5/5] RUN npm install --legacy-peer-deps
+#8 CACHED
+
+#9 [deps 2/5] RUN apk add --no-cache openssl
+#9 CACHED
+
+#10 [deps 3/5] WORKDIR /app
+#10 CACHED
+
+#11 [builder 4/7] COPY --from=deps /app/node_modules ./node_modules
+#11 CACHED
+
+#12 [builder 5/7] COPY . .
+#12 DONE 0.3s
+
+#13 [builder 6/7] RUN npx prisma generate
+#13 8.389 Environment variables loaded from .env
+#13 8.411 Prisma schema loaded from prisma/schema.prisma
+#13 16.67 
+#13 16.67 ✔ Generated Prisma Client (v6.19.3) to ./node_modules/@prisma/client in 725ms
+#13 16.67 
+#13 16.67 Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+#13 16.67 
+#13 16.67 Tip: Want to turn off tips and other hints? https://pris.ly/tip-4-nohints
+#13 16.67 
+#13 16.75 npm notice
+#13 16.75 npm notice New major version of npm available! 10.9.8 -> 12.0.1
+#13 16.75 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.0.1
+#13 16.75 npm notice To update run: npm install -g npm@12.0.1
+#13 16.75 npm notice
+#13 DONE 17.3s
+
+#14 [builder 7/7] RUN npm run build
+#14 0.939 
+#14 0.939 > seminar-management@0.1.0 build
+#14 0.939 > next build
+#14 0.939 
+#14 4.005   ▲ Next.js 14.2.8
+#14 4.006   - Environments: .env
+#14 4.006 
+#14 4.007    Skipping validation of types
+#14 4.007    Skipping linting
+#14 4.994    Creating an optimized production build ...
+#14 30.82 Browserslist: caniuse-lite is outdated. Please run:
+#14 30.82   npx update-browserslist-db@latest
+#14 30.82   Why you should do it regularly: https://github.com/browserslist/update-db#readme
+#14 37.34  ✓ Compiled successfully
+#14 37.34    Collecting page data ...
+#14 41.03    Generating static pages (0/6) ...
+#14 41.44    Generating static pages (1/6) 
+#14 41.45    Generating static pages (2/6) 
+#14 41.56    Generating static pages (4/6) 
+#14 41.57  ✓ Generating static pages (6/6)
+#14 42.78    Finalizing page optimization ...
+#14 42.78    Collecting build traces ...
+#14 84.99 
+#14 85.00 Route (pages)                             Size     First Load JS
+#14 85.00 ┌ ○ /                                     2.52 kB         116 kB
+#14 85.00 ├   /_app                                 0 B            82.7 kB
+#14 85.00 ├ ○ /404                                  180 B          82.9 kB
+#14 85.00 ├ ƒ /api/auth/login                       0 B            82.7 kB
+#14 85.00 ├ ƒ /api/auth/me                          0 B            82.7 kB
+#14 85.00 ├ ƒ /api/courses                          0 B            82.7 kB
+#14 85.00 ├ ƒ /api/courses/[id]                     0 B            82.7 kB
+#14 85.00 ├ ƒ /api/courses/[id]/assign              0 B            82.7 kB
+#14 85.00 ├ ƒ /api/courses/[id]/suggest-trainers    0 B            82.7 kB
+#14 85.00 ├ ƒ /api/dashboard                        0 B            82.7 kB
+#14 85.00 ├ ƒ /api/trainers                         0 B            82.7 kB
+#14 85.00 ├ ƒ /api/trainers/[id]                    0 B            82.7 kB
+#14 85.00 ├ ○ /courses                              6.12 kB         148 kB
+#14 85.00 ├ ○ /login                                2.4 kB          142 kB
+#14 85.00 └ ○ /trainers                             5.01 kB         147 kB
+#14 85.00 + First Load JS shared by all             87.5 kB
+#14 85.00   ├ chunks/framework-64ad27b21261a9ce.js  44.8 kB
+#14 85.00   ├ chunks/main-2cfcdddc4f59f93a.js       32.1 kB
+#14 85.00   └ other shared chunks (total)           10.6 kB
+#14 85.00 
+#14 85.00 ○  (Static)   prerendered as static content
+#14 85.00 ƒ  (Dynamic)  server-rendered on demand
+#14 85.00 
+#14 DONE 85.2s
+
+#15 [runner  5/11] RUN adduser --system --uid 1001 nextjs
+#15 CACHED
+
+#16 [runner  4/11] RUN addgroup --system --gid 1001 nodejs
+#16 CACHED
+
+#17 [runner  6/11] COPY --from=builder /app/public ./public
+#17 CACHED
+
+#18 [runner  7/11] COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+#18 DONE 2.6s
+
+#19 [runner  8/11] COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+#19 DONE 0.5s
+
+#20 [runner  9/11] COPY --from=builder /app/prisma ./prisma
+#20 DONE 0.2s
+
+#21 [runner 10/11] COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
+#21 DONE 0.5s
+
+#22 [runner 11/11] COPY --from=builder /app/node_modules/@prisma ./node_modules/@prisma
+#22 DONE 2.4s
+
+#23 exporting to image
+#23 exporting layers
+#23 exporting layers 14.1s done
+#23 exporting manifest sha256:2690e52afd9e76626cf7a2487c95653ea9c822af348b20775959a9767a87166c 0.0s done
+#23 exporting config sha256:3e8b102aaf0c031b89a2f486845d3b49d3c5042f491e03c3ca1986cc4c82ec56 0.0s done
+#23 exporting attestation manifest sha256:cc42a88b1e5c91f5b9fa942a0b713bb6ed13678684a1091e995b9c51f347ef84
+#23 exporting attestation manifest sha256:cc42a88b1e5c91f5b9fa942a0b713bb6ed13678684a1091e995b9c51f347ef84 0.1s done
+#23 exporting manifest list sha256:5e72649c346db852498a99eae54e785b6069fd714b216c65b87f65555ead128d 0.0s done
+#23 naming to docker.io/library/seminar-management-app:latest 0.0s done
+#23 unpacking to docker.io/library/seminar-management-app:latest
+#23 unpacking to docker.io/library/seminar-management-app:latest 3.7s done
+#23 DONE 18.3s
+
+#24 resolving provenance for metadata file
+#24 DONE 0.1s
+ Image seminar-management-app Built 
+ Container seminar-postgres Running 
+ Container seminar-mailhog Running 
+ Container seminar-management-app Recreate 
+ Container seminar-management-app Recreated 
+ Container seminar-postgres Waiting 
+ Container seminar-postgres Healthy 
+ Container seminar-management-app Starting 
+ Container seminar-management-app Started 

@@ -3,8 +3,8 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model Trainer {
@@ -19,6 +19,8 @@ model Trainer {
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
   courses      Course[]
+
+  @@index([email])
 }
 
 model Course {
@@ -37,4 +39,16 @@ model Course {
   trainer          Trainer?  @relation(fields: [trainerId], references: [id])
   createdAt        DateTime  @default(now())
   updatedAt        DateTime  @updatedAt
+
+  @@index([trainerId])
+  @@index([date])
+}
+
+model User {
+  id        String   @id @default(uuid())
+  username  String   @unique
+  password  String
+  role      String   @default("admin")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
