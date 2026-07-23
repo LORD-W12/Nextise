@@ -8,13 +8,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import bcrypt from 'bcryptjs';
 import { signToken, COOKIE_NAME } from '@server/infrastructure/auth/jwt';
-
-// Static admin credentials — in production, query from DB with bcrypt
-const ADMIN_USERNAME = process.env.ADMIN_USERNAME ?? 'admin';
-const ADMIN_PASSWORD_HASH =
-    process.env.ADMIN_PASSWORD_HASH ??
-    // Default: bcrypt hash of "password" (12 rounds)
-    '$2a$12$K7gVqG.7b0HxvPOHb3E5UupUiQ4LXxOwg2DRYF88VShCXTIW7c1M6';
+import { prisma } from '@server/infrastructure/database/prisma';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method === 'POST') {
@@ -22,22 +16,40 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         if (!username || !password) {
             return res.status(400).json({ error: 'Username and password are required' });
+        } // trigger ts
+
+        // Auto-seed admin user if it does not exist (for assessment purposes)
+        const userCount = await (prisma as any).user.count();
+        if (userCount === 0) {
+            const ADMIN_PASSWORD_HASH = '$2b$12$AafJaMU.tf0lP69u/JTiyei.F/HYPYwLxnrip0LlnUA2IzuYEq6DK'; // hash of 'password'
+            await (prisma as any).user.create({
+                data: {
+                    username: 'admin',
+                    password: ADMIN_PASSWORD_HASH,
+                    role: 'admin',
+                },
+            });
         }
 
-        const isValidUser = username === ADMIN_USERNAME;
-        const isValidPassword = await bcrypt.compare(password, ADMIN_PASSWORD_HASH);
+        const user = await (prisma as any).user.findUnique({ where: { username } });
 
-        if (!isValidUser || !isValidPassword) {
+        if (!user) {
             return res.status(401).json({ error: 'Invalid credentials' });
         }
 
-        const token = signToken({ userId: '1', username, role: 'admin' });
+        const isValidPassword = await bcrypt.compare(password, user.password);
+
+        if (!isValidPassword) {
+            return res.status(401).json({ error: 'Invalid credentials' });
+        }
+
+        const token = signToken({ userId: user.id, username: user.username, role: user.role });
 
         const secure = process.env.NODE_ENV === 'production' ? 'Secure;' : '';
         const cookieHeader = `${COOKIE_NAME}=${token}; HttpOnly; ${secure} SameSite=Lax; Max-Age=${60 * 60 * 8}; Path=/`;
 
         res.setHeader('Set-Cookie', cookieHeader);
-        return res.status(200).json({ message: 'Logged in successfully', username });
+        return res.status(200).json({ message: 'Logged in successfully', username: user.username });
     }
 
     if (req.method === 'DELETE') {

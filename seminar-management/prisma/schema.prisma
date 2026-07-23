@@ -3,8 +3,8 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = "file:./seminar.db"
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model Trainer {
@@ -42,4 +42,13 @@ model Course {
 
   @@index([trainerId])
   @@index([date])
+}
+
+model User {
+  id        String   @id @default(uuid())
+  username  String   @unique
+  password  String
+  role      String   @default("admin")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

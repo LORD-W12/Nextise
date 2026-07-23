@@ -2,7 +2,7 @@ import axios from 'axios';
 import { toast } from 'react-hot-toast';
 
 const apiClient = axios.create({
-    baseURL: process.env.NEXT_PUBLIC_API_URL || '/api',
+    baseURL: process.env.NEXT_PUBLIC_API_URL?.replace(/\/api$/, '') || '',
     timeout: 10000,
     headers: {
         'Content-Type': 'application/json',
@@ -29,9 +29,11 @@ apiClient.interceptors.response.use(
         const status = error.response ? error.response.status : null;
 
         if (status === 401) {
-            toast.error('Session expired. Please log in again.');
-            // Handle logout/redirect
-            if (typeof window !== 'undefined') {
+            const isLoginEndpoint = error.config?.url?.includes('/auth/login');
+            if (isLoginEndpoint) {
+                toast.error('Invalid username or password.');
+            } else if (typeof window !== 'undefined' && window.location.pathname !== '/login') {
+                toast.error('Session expired. Please log in again.');
                 window.location.href = '/login';
             }
         } else if (status >= 500) {

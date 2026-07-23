@@ -12,7 +12,7 @@
     "@google/generative-ai": "^0.24.1",
     "@hookform/error-message": "^2.0.1",
     "@hookform/resolvers": "^5.4.0",
-    "@prisma/client": "^7.9.0",
+    "@prisma/client": "^6.0.0",
     "@types/bcryptjs": "^2.4.6",
     "@types/cookie": "^0.6.0",
     "@types/js-cookie": "^3.0.6",
