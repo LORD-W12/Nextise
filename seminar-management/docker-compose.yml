@@ -9,6 +9,7 @@ services:
     restart: unless-stopped
     ports:
       - '3000:3000'
+    command: ["node", "server.js"]
     environment:
       - NODE_ENV=production
       - DATABASE_URL=postgresql://postgres:postgres@db:5432/seminar_db?schema=public
